@@ -104,9 +104,11 @@ class MovieSessionListSerializer(MovieSessionSerializer):
 
 
 class MovieImageSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
+
     class Meta:
         model = Movie
-        fields = ("id", "image",)
+        fields = ("id", "image")
 
 
 class TicketSerializer(serializers.ModelSerializer):

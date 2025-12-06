@@ -39,9 +39,9 @@ class Actor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-def movie_image_path(movie: "Movie", ext: str) -> pathlib.Path:
-    filename = f"{slugify(movie.title)}-{uuid.uuid4()}{ext}"
-    return pathlib.Path("uploads") / "movies" / filename
+def movie_image_path(instance: "Movie", filename: str) -> str:
+    ext = pathlib.Path(filename).suffix
+    return f"uploads/movies/{slugify(instance.title)}-{uuid.uuid4()}{ext}"
 
 
 class Movie(models.Model):
